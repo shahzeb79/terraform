@@ -1,0 +1,44 @@
+# azure-pipeline.yaml
+
+variables:
+  - name: dev_resource_group
+    value: shahzeb-dev-rg
+  - name: dev_location
+    value: germanywestcentral
+  - name: test_resource_group
+    value: shahzeb-test-rg
+  - name: test_location
+    value: austriaeast
+  - name: prod_resource_group
+    value: shahzeb-prod-rg
+  - name: prod_location
+    value: northeurope
+
+# Define stages
+stages:
+  - stage: Deploy_Dev
+    displayName: 'Deploy to Dev'
+    jobs:
+      - template: templates/deploy-terraform.yml
+        parameters:
+          environment: 'dev'
+          resource_group: $(dev_resource_group)
+          location: $(dev_location)
+
+  - stage: Deploy_Test
+    displayName: 'Deploy to Test'
+    jobs:
+      - template: templates/deploy-terraform.yml
+        parameters:
+          environment: 'test'
+          resource_group: $(test_resource_group)
+          location: $(test_location)
+
+  - stage: Deploy_Prod
+    displayName: 'Deploy to Prod'
+    jobs:
+      - template: templates/deploy-terraform.yml
+        parameters:
+          environment: 'prod'
+          resource_group: $(prod_resource_group)
+          location: $(prod_location)

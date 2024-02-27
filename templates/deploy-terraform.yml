@@ -1,0 +1,20 @@
+# templates/deploy-terraform.yml
+
+parameters:
+  - name: environment
+    type: string
+  - name: resource_group
+    type: string
+  - name: location
+    type: string
+
+jobs:
+- job: Deploy_Infrastructure
+  displayName: 'Deploy Infrastructure -  ${{ parameters.environment }}'
+  pool:
+      name: testPool
+  steps:
+  - script: |
+      terraform init
+      terraform plan -var rgname=${{ parameters.resource_group }} -var location=${{ parameters.location }}
+    displayName: 'Terraform Actions'
