@@ -62,7 +62,6 @@ module "aks" {
   location               = var.location
   resource_group_name    = var.rgname
   namespaces = var.namespaces
-
   depends_on = [
     module.ServicePrincipal
   ]
@@ -73,4 +72,16 @@ resource "local_file" "kubeconfig" {
   depends_on   = [module.aks]
   filename     = "./kubeconfig"
   content      = module.aks.config
+  
+}
+
+provider "kubernetes" {
+  config_path    = "~/.kube/config"
+  config_context = "shahzeb-aks-cluster"
+}
+resource "kubernetes_namespace" "namespaces" {
+  count = length(var.namespaces)
+  metadata {
+    name = var.namespaces[count.index]
+  }
 }

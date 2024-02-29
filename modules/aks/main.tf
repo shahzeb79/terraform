@@ -56,11 +56,6 @@ resource "azurerm_kubernetes_cluster" "aks-cluster" {
 
     
   }
-resource "kubernetes_namespace" "namespaces" {
-  count = length(var.namespaces)
-  metadata {
-    name = var.namespaces[count.index]
-  }
-}
+
 
 
