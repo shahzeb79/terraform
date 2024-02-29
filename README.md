@@ -51,7 +51,7 @@ Pipeline job can be found here https://dev.azure.com/shahzeb799/TestApi/_build?d
 
 GitOps is a software development methodology and operational model that utilizes Git as the single source of truth for defining infrastructure and application delivery. In GitOps, all aspects of the system, including infrastructure configurations, application code, and deployment manifests, are stored in a Git repository. Changes made to this repository trigger automated workflows that update the target environment to match the desired state specified in the repository.
 
-# Pros of GitOps
+### Pros of GitOps
 
 - Infrastructure as Code (IaC): GitOps promotes the use of infrastructure as code, enabling teams to manage infrastructure configurations in a version-controlled manner. This enhances reproducibility, consistency, and scalability of infrastructure deployments.
 
@@ -65,7 +65,7 @@ GitOps is a software development methodology and operational model that utilizes
 
 - Immutable Infrastructure: GitOps encourages treating infrastructure as immutable, where changes are made by updating definitions in the Git repository rather than directly modifying running systems. This promotes consistency and reduces configuration drift.
 
-# Cons of GitOps
+### Cons of GitOps
 
 - Complexity: Implementing GitOps involves setting up robust CI/CD pipelines, automation scripts, and integrating with infrastructure management tools. Managing this complexity effectively can be challenging, especially for smaller teams or those new to DevOps practices.
 
