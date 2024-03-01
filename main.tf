@@ -61,7 +61,7 @@ module "aks" {
   client_secret          = module.ServicePrincipal.client_secret
   location               = var.location
   resource_group_name    = var.rgname
-  namespaces = var.namespaces
+
   depends_on = [
     module.ServicePrincipal
   ]
@@ -80,8 +80,9 @@ provider "kubernetes" {
   config_context = "shahzeb-aks-cluster"
 }
 resource "kubernetes_namespace" "namespaces" {
-  count = length(var.namespaces)
+   for_each = { for ns in var.namespaces : ns => ns }
+
   metadata {
-    name = var.namespaces[count.index]
+    name = each.value
   }
 }

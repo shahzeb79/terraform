@@ -16,7 +16,3 @@ variable "client_secret" {
   type = string
   sensitive = true
 }
-variable "namespaces" {
-  description = "List of namespaces to create inside the Kubernetes cluster"
-  type        = list(string)
-}
